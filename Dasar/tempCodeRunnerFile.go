@@ -1,0 +1,2 @@
+r()
+	fmt.Println("erro
