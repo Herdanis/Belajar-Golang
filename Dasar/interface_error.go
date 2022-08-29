@@ -15,7 +15,10 @@ func Pembagian(nilai int, pembagi int) (int, error) {
 }
 
 func main() {
+
+	// save to multi variable
 	data, err := Pembagian(1, 0)
+
 	if err == nil {
 		fmt.Println("hasil", data)
 	} else {
