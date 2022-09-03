@@ -12,19 +12,24 @@ func ChangeCountryToIndonesia(address *Address) { //parameter harus pointer ke A
 
 func main() {
 	address1 := Address{"Subang", "Jabar", "Indonesia"}
+	// menggunakan '&' untuk mengarahkan value variable ke variable pertama
 	address2 := &address1 // pointer ke address1
 	address3 := &address1
 
-	address2.City = "Bandung"
+	address2.City = "Bandung" // Hanya value dari city yg berubah
 
-	// address2 = &Address{"Malang", "Jatim", "Indonesia"} // Mengubah semua isi Data mengunakan Operator &
-	*address2 = Address{"Malang", "Jatim", "Indonesia"} // Semua mengacu pada Pointer ini Menggunakan Operator *
+	/* Mengubah semua isi Data mengunakan Operator & tetapi membuat memory baru
+	tidak mengacu ke value asli nya */
+	address2 = &Address{"Malang", "Jatim", "Indonesia"}
+
+	// Mengubah semua data dan semua yg mengacu pada address2 juga berubah ke data baru
+	*address2 = Address{"Malang", "Jatim", "Indonesia"}
 
 	fmt.Println(address1)
 	fmt.Println(address2)
 	fmt.Println(address3)
 
-	alamat1 := new(Address) // Membuat variabel baru dan kosong
+	alamat1 := new(Address) // Membuat variabel baru dan tidak memiliki data
 	alamat1.City = "Jakarta"
 	fmt.Println(alamat1)
 

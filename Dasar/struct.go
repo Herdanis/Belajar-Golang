@@ -7,11 +7,12 @@ type Customer struct {
 	Age           int
 }
 
-//this name is struct methode or struct func
+// this name is struct methode or struct func
 func (customer Customer) sayHello1(name string) {
 	fmt.Println("hello", name, "is", customer.Name)
 }
 
+// without struct func
 func sayHello1(customer Customer, name string) {
 	fmt.Println("hello", name, "is", customer.Name)
 }
