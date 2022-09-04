@@ -1,0 +1,3 @@
+layer service: business logic
+layer repository: jembatan ke database
+layer entity: representasi table database
