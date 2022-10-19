@@ -15,6 +15,53 @@ func valueTes() string {
 	return "yes"
 }
 
+func BenchmarkTable(b *testing.B) {
+	benchmarks := []struct {
+		name     string
+		request  string
+		expected string
+	}{
+		{
+			name:    "qwe",
+			request: "qwe",
+		},
+		{
+			name:    "asd",
+			request: "asd",
+		},
+		{
+			name:    "zxc",
+			request: "zxc",
+		},
+	}
+
+	for _, benchmark := range benchmarks {
+		b.Run(benchmark.name, func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				HelloWorld(benchmark.request)
+			}
+		})
+	}
+}
+func BenchmarkHelloWorld(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		HelloWorld("tes")
+	}
+}
+
+func BenchmarkSub(b *testing.B) {
+	b.Run("yes", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			HelloWorld("tes")
+		}
+	})
+	b.Run("tes", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			HelloWorld("tes")
+		}
+	})
+}
+
 /* aturan nama func unit test menggunakan "Test..." nama func nya
 di unit test wajib menggunakan (t *testing.T) dan tidak ada return value */
 
@@ -60,8 +107,11 @@ func TestSubTest(t *testing.T) {
 	})
 }
 
-/* untuk menjalankan testing.M wajib menggunakan func TestMain(m *testing.M)
-func ini hanya bisa di gunakan dalam 1 package */
+/*
+	untuk menjalankan testing.M wajib menggunakan func TestMain(m *testing.M)
+
+func ini hanya bisa di gunakan dalam 1 package
+*/
 func TestMain(m *testing.M) {
 
 	// mengeksekusi semua func sebelum unit test
