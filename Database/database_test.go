@@ -1,8 +1,10 @@
-package main
+package golang_database
 
 import (
 	"database/sql"
 	"testing"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 func TestConnectDb(t *testing.T) {

@@ -1,4 +1,4 @@
-package main
+package golang_database
 
 import (
 	"database/sql"
@@ -6,7 +6,7 @@ import (
 )
 
 func GetConnection() *sql.DB {
-	db, err := sql.Open("mysql", "docker:123@tcp(127.0.0.1:3306)/docker")
+	db, err := sql.Open("mysql", "docker:123@tcp(127.0.0.1:3306)/docker?parseTime=true")
 	if err != nil {
 		panic(err)
 	}
